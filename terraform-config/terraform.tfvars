@@ -1,0 +1,5 @@
+AWS_ACCESS_KEY_ID     = "AKIAXD7ESCGHETIT3YE4"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_DEFAULT_REGION    = "us-east-1"
+key_name              = "key_pair"
+private_key_path      = "./key_pair.pem"
