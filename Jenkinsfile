@@ -24,35 +24,29 @@ pipeline {
         stage('Initialize Terraform') {
             steps {
                 sh 'pwd'
-                dir('terraform-config') {
                 sh 'terraform init'
                 sh 'pwd'
-                }
-              
             }
         }
         
         stage('Format and Validate Terraform Code') {
             steps {
-                dir('terraform-config') {
                 sh 'terraform fmt && terraform validate'
-                }
+                
             }
         }
 
         stage('Plan Terraform Plan') {
-            steps {
-                dir('terraform-config') {
+            steps { 
                     sh 'pwd'
                     sh 'terraform plan'
-                }
+                
             }
         }
         stage('Apply Terraform Plan') {
             steps {
-                dir('terraform-config') {
                     sh 'terraform apply -var-file=terraform.tfvars -auto-approve'
-                }
+                
             }
         }
     }
