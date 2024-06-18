@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout Source Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/camilo-gdonoso/terraform_jenkins.git'
+                git branch: 'master', url: 'https://github.com/camilo-gdonoso/nuevo_terra_nginx_jenkins.git'
             }
         }
 
