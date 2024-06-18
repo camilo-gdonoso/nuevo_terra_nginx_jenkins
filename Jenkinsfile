@@ -34,7 +34,7 @@ pipeline {
         
         stage('Format and Validate Terraform Code') {
             steps {
-                sh 'terraform fmt && validate'             
+                sh 'terraform fmt && terraform validate'             
             }
         }
 
