@@ -34,7 +34,7 @@ pipeline {
         
         stage('Format and Validate Terraform Code') {
             steps {
-                sh 'terraform fmt'             
+                sh 'terraform fmt && validate'             
             }
         }
 
@@ -46,9 +46,9 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
-                withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'), string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')]) {
+               // withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'), string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh 'terraform apply -auto-approve'
-                }
+               // }
             }
         }
     }
