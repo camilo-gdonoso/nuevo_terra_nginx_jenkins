@@ -40,17 +40,15 @@ pipeline {
 
         stage('Plan Terraform Plan') {
             steps { 
-                    sh 'terraform plan'
+                    sh 'terraform plan  -var "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"'
             }
         }
 
         stage('Terraform Apply') {
             steps {
-               // withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'), string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')]) {
-                    sh 'terraform apply -auto-approve'
-               // }
+                sh 'terraform apply -auto-approve -var "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"'
             }
-        }
+            }
     }
     
     post {
