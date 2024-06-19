@@ -39,8 +39,12 @@ pipeline {
         }
 
         stage('Plan Terraform Plan') {
-            steps { 
-                    sh 'terraform plan'
+            steps {
+                sh 'terraform plan \
+                    -var "aws_access_key_id=${AWS_ACCESS_KEY_ID}" \
+                    -var "aws_secret_access_key=${AWS_SECRET_ACCESS_KEY}" \
+                    -var "key_name=key_pair" \
+                    -var "private_key_path=key_pair.pem"'
             }
         }
 
