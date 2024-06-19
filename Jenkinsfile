@@ -4,6 +4,7 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        TF_IN_AUTOMATION = "true"
     }
 
     stages {
@@ -50,7 +51,7 @@ pipeline {
 
         stage('Apply Terraform') {
             steps {
-                sh 'terraform apply \
+                sh  'echo 'yes' | terraform apply -auto-approve \
                     -var "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" \
                     -var "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" \
                     -var "key_name=key_pair" \
