@@ -48,9 +48,9 @@ pipeline {
             }
         }
 
-        stage('Apply Terraform') {
+        stage('Apply or Destroy Terraform') {
             steps {
-                sh  'terraform apply -auto-approve \
+                sh  'terraform $action -auto-approve \
                     -var "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" \
                     -var "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" \
                     -var "key_name=key_pair" \
