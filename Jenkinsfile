@@ -12,7 +12,7 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/camilo-gdonoso/nuevo_terra_nginx_jenkins.git'
             }
         }
-/*
+
         stage('Prepare SSH Key') {
             steps {
                 withCredentials([file(credentialsId: 'PRIVATE_KEY_AWS', variable: 'KEY_FILE')]) {
@@ -23,7 +23,7 @@ pipeline {
                 }
             }
         }
- */       
+        
         stage('Initialize Terraform') {
             steps {
                 sh 'pwd'
